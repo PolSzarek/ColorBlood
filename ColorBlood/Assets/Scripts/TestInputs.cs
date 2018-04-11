@@ -45,7 +45,7 @@ public class TestInputs : MonoBehaviour {
             Debug.Log("RightVertical : " + input);
             lastInput = "RightVertical";
         }
-        else if ((input = Input.GetAxis("BumperAxis")) != 0 && lastInput != "BumperAxis")
+        else if ((input = Input.GetAxis("BumperAxis")) > 0.99 || (input = Input.GetAxis("BumperAxis")) < -0.99)
         {
             Debug.Log("BumperAxis : " + input);
             lastInput = "BumperAxis";
