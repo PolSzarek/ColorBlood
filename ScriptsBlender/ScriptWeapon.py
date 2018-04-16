@@ -3,9 +3,9 @@ from math import radians
 from mathutils import Matrix
 
 
-def run():
-    file1 = 'C:\\Users\\user\\Documents\\ColorBlood\\ColorBlood\\Assets\\PolygonDungeon\\Models\\SM_Wep_Goblin_Mace_01.fbx'
-    file2 = 'C:\\Users\\user\\Desktop\\SM_Wep_Goblin_Mace.fbx'
+def run(fileName):
+    file1 = 'C:\\Users\\pauill_c\\Documents\\Korea Project\\3D Game Basic\\ColorBlood\\ColorBlood\\Assets\\PolygonDungeon\\Models\\' + fileName
+    file2 = 'C:\\Users\\pauill_c\\Desktop\\' + fileName
     rotateWeapon(file1, file2)
     
 def removeAllObj():
