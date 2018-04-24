@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/TestInputScene.unity
+- path: Assets/Scenes/ChivalerySpawn.unity
   isLoaded: 1
   isActive: 1
