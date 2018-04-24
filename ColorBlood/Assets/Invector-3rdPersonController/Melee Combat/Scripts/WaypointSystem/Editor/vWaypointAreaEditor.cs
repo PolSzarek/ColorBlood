@@ -140,7 +140,7 @@ namespace Invector.vCharacterController.AI
                             Handles.color = node.isValid ? (currentNode.Equals(node) ? Color.green : Color.white) : Color.red;
 
                         if (!editMode)
-                            Handles.SphereHandleCap(0, node.transform.position, Quaternion.identity, 0.25f, EventType.ignore);
+                            Handles.SphereHandleCap(0, node.transform.position, Quaternion.identity, 0.25f, EventType.Ignore);
                         else if (Handles.Button(node.transform.position, Quaternion.identity, currentNode ? (currentNode == node ? .5f : 0.25f) : .25f, currentNode ? (currentNode == node ? .5f : 0.25f) : .25f, Handles.SphereHandleCap))
                         {
                             indexOfWaypoint = pathArea.waypoints.IndexOf(node);
@@ -167,7 +167,7 @@ namespace Invector.vCharacterController.AI
                                     {
                                         Handles.DrawLine(patrolPoint0.transform.position, patrolPoint.position);
                                         patrolPoint0 = patrolPoint;
-                                        Handles.CubeHandleCap(0, patrolPoint.transform.position, Quaternion.identity, 0.15f, EventType.ignore);
+                                        Handles.CubeHandleCap(0, patrolPoint.transform.position, Quaternion.identity, 0.15f, EventType.Ignore);
                                     }
                                 }
                             }

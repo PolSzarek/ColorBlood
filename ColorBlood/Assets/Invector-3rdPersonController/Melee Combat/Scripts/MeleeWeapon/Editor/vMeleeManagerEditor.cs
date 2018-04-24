@@ -471,8 +471,11 @@ namespace Invector.vMelee
                     EditorGUILayout.ObjectField("Selected Hit Box " + (seletedHitboxIndex + 1), hitBox, typeof(vHitBox), true);
                     //GUILayout.Box("Hit Settings", GUILayout.ExpandWidth(true));
                     hitBox.damagePercentage = EditorGUILayout.IntSlider("Damage Percentage", hitBox.damagePercentage, 0, 100);
+#if UNITY_2017_1_OR_NEWER
+                    hitBox.triggerType = (vHitBoxType)EditorGUILayout.EnumFlagsField("Trigger Type", hitBox.triggerType);
+#else
                     hitBox.triggerType = (vHitBoxType)EditorGUILayout.EnumMaskField("Trigger Type", hitBox.triggerType);
-
+#endif
                     if (GUI.changed)
                     {
                         EditorUtility.SetDirty(hitBox);
@@ -494,7 +497,11 @@ namespace Invector.vMelee
                 GUILayout.Box("New Hit Box", GUILayout.ExpandWidth(true));
                 damagePercentage = EditorGUILayout.IntSlider("Damage Percentage", damagePercentage, 0, 100);
 
+#if UNITY_2017_1_OR_NEWER
+                triggerType = (vHitBoxType)EditorGUILayout.EnumFlagsField("Trigger Type", triggerType);
+#else
                 triggerType = (vHitBoxType)EditorGUILayout.EnumMaskField("Trigger Type", triggerType);
+#endif
 
                 GUILayout.BeginHorizontal();
 
