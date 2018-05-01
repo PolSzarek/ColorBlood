@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 427962}
   - component: {fileID: 3370480}
   - component: {fileID: 2381336}
+  - component: {fileID: 64668605585028348}
   m_Layer: 0
   m_Name: SM_Env_GroundMound_01
   m_TagString: Untagged
@@ -23,13 +24,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.1418753, y: -0.44829178, z: 56.697594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 38.95, z: 0}
 --- !u!23 &2381336
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,3 +83,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142126}
   m_IsPrefabParent: 1
+--- !u!64 &64668605585028348
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 6210eefa6dfd9fe44804d85bd670ace9, type: 3}
