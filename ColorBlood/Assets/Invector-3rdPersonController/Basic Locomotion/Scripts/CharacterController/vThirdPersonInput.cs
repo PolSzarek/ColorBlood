@@ -54,7 +54,7 @@ namespace Invector.vCharacterController
         public vThirdPersonController cc;                   // access the ThirdPersonController component
         [HideInInspector]
         public vHUDController hud;                          // acess vHUDController component        
-        public ColorHUDController hudColor;                          // acess vHUDController component        
+        public ColorHUDController hudColor;                          // acess vHUDController component
         protected bool updateIK = false;
         protected bool isInit;
 
