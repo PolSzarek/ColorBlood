@@ -41,7 +41,6 @@ public class ApplicationManager : MonoBehaviour {
 			PauseGame(!gamePaused);
 		}
 
-
 		Scenes eScene = (Scenes)scene;
 		switch(eScene) {
 			case Scenes.MAIN:
