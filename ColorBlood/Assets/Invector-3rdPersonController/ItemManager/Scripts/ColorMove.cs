@@ -12,5 +12,6 @@ namespace Invector.vItemManager
 	}
 	public class ColorMove : MonoBehaviour {
 		public MoveColorEffect colorAttack;
-	}
+        public MoveColorEffect colorDefense;
+    }
 }

@@ -29,6 +29,7 @@ namespace Invector.vMelee
 
         [HideInInspector]
         public vIMeleeFighter fighter;
+        private vItemManager.ColorMove colorMove;
         private int damageMultiplier;
         private int currentRecoilID;
         private int currentReactionID;
@@ -48,6 +49,7 @@ namespace Invector.vMelee
         protected virtual void Init()
         {
             fighter = gameObject.GetMeleeFighter();
+            colorMove = GetComponent<vItemManager.ColorMove>();
             ///Initialize all bodyMembers and weapons
             foreach (vBodyMember member in Members)
             {
@@ -152,7 +154,20 @@ namespace Invector.vMelee
             if (this.ignoreDefense) damage.ignoreDefense = this.ignoreDefense;
             /// Calc damage with multiplier 
             /// and Call ApplyDamage of attackObject 
-            damage.damageValue *= damageMultiplier > 1 ? damageMultiplier : 1;
+//            damage.damageValue *= damageMultiplier > 1 ? damageMultiplier : 1;
+            vItemManager.ColorMove targetColor = hitInfo.targetCollider.GetComponentInParent<vItemManager.ColorMove>();
+            if (targetColor)
+            {
+                if (colorMove.colorAttack == targetColor.colorDefense)
+                    damage.damageValue = 0;
+                else if ((vItemManager.MoveColorEffect)(((int)colorMove.colorAttack + 1) % 4) == targetColor.colorDefense)
+                    damage.damageValue = 15;
+                else
+                    damage.damageValue =  5;
+            } else
+            {
+                Debug.Log("NOT A TARGET");
+            }
             hitInfo.attackObject.ApplyDamage(hitInfo.hitBox, hitInfo.targetCollider, damage);
             onDamageHit.Invoke(hitInfo);
         }

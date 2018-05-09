@@ -17,7 +17,7 @@ namespace Invector.vItemManager
 
 				if (color != null) {
 					Color shieldColor = new Color();
-					switch (color.colorAttack) {
+					switch (color.colorDefense) {
 						case MoveColorEffect.RED:
 						shieldColor = Color.red;
 						break;

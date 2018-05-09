@@ -18,6 +18,9 @@ namespace Invector.vCharacterController
         [vEditorToolbar("Inputs")]
         [Header("Melee Inputs")]
         public GenericInput weakAttackInput = new GenericInput("Mouse0", "RB", "RB");
+        public GenericInput weakAttackInput1 = new GenericInput("Mouse0", "LB", "RB");
+        public GenericInput weakAttackInput2 = new GenericInput("Mouse0", "RT", "RB");
+        public GenericInput weakAttackInput3 = new GenericInput("Mouse0", "LT", "RB");
         public GenericInput strongAttackInput = new GenericInput("Alpha1", false, "RT", true, "RT", false);
         public GenericInput blockInput = new GenericInput("Mouse1", "LB", "LB");
 
@@ -92,7 +95,7 @@ namespace Invector.vCharacterController
         {
             if (cc.animator == null) return;
 
-            if (weakAttackInput.GetButtonDown() && MeleeAttackStaminaConditions())
+            if ((weakAttackInput.GetButtonDown() || weakAttackInput1.GetButtonDown() || weakAttackInput2.GetButtonDown() || weakAttackInput3.GetButtonDown()) && MeleeAttackStaminaConditions() && !isBlocking)
             {
                 cc.animator.SetInteger("AttackID", meleeManager.GetAttackID());
                 cc.animator.SetTrigger("WeakAttack");
