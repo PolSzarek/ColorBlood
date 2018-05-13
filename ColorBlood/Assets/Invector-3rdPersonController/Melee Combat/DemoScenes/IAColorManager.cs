@@ -5,35 +5,29 @@ using UnityEngine;
 public class IAColorManager : MonoBehaviour {
 
     public Light lt;
-    public enum MoveColorEffect
-    {
-        RED = 0,
-        BLUE = 1,
-        GREEN = 2,
-        YELLOW = 3
-    }
-    public MoveColorEffect colorAttack;
+    public Invector.vItemManager.ColorMove colormanager;
 
     // Use this for initialization
     void Start () {
         lt = GetComponent<Light>();
-        colorAttack = MoveColorEffect.RED;
+        colormanager = GetComponent<Invector.vItemManager.ColorMove>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         StartCoroutine(waiter());
-        lt.color = (colorAttack == MoveColorEffect.BLUE) ? Color.blue : (colorAttack == MoveColorEffect.GREEN) ? Color.green : (colorAttack == MoveColorEffect.RED) ? Color.red : Color.yellow;
+        lt.color = (colormanager.colorAttack == Invector.vItemManager.MoveColorEffect.BLUE) ? Color.blue : (colormanager.colorAttack == Invector.vItemManager.MoveColorEffect.GREEN) ? Color.green : (colormanager.colorAttack == Invector.vItemManager.MoveColorEffect.RED) ? Color.red : Color.yellow;
     }
 
     IEnumerator waiter()
     {
-        System.Array values = System.Enum.GetValues(typeof(MoveColorEffect));
+        System.Array values = System.Enum.GetValues(typeof(Invector.vItemManager.MoveColorEffect));
         System.Random random = new System.Random();
-        MoveColorEffect randomColor = (MoveColorEffect)values.GetValue(random.Next(values.Length));
+        Invector.vItemManager.MoveColorEffect randomColor = (Invector.vItemManager.MoveColorEffect)values.GetValue(random.Next(values.Length));
 
-        int wait_time = UnityEngine.Random.Range(0, 1000);
+        int wait_time = UnityEngine.Random.Range(999, 1000);
         yield return new WaitForSeconds(wait_time);
-        colorAttack = randomColor;
+        colormanager.colorAttack = randomColor;
+        colormanager.colorDefense = randomColor;
     }
 }
