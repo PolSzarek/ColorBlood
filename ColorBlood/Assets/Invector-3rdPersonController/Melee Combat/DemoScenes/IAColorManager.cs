@@ -1,33 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.vItemManager;
 
 public class IAColorManager : MonoBehaviour {
 
     public Light lt;
-    public Invector.vItemManager.ColorMove colormanager;
+    public float TimeBeforeChange;
+    private ColorMove colormanager;
+    private bool changeColor;
+    private System.Random random;
 
     // Use this for initialization
     void Start () {
         lt = GetComponent<Light>();
-        colormanager = GetComponent<Invector.vItemManager.ColorMove>();
+        colormanager = GetComponent<ColorMove>();
+        lt.color = (colormanager.colorAttack == MoveColorEffect.BLUE) ? Color.blue : (colormanager.colorAttack == MoveColorEffect.GREEN) ? Color.green : (colormanager.colorAttack == MoveColorEffect.RED) ? Color.red : Color.yellow;
+        changeColor = false;
+        random = new System.Random();
+        Random.InitState(unchecked((int)(System.DateTime.Now.Ticks % int.MaxValue)));
+        StartCoroutine(waiter());
     }
 	
 	// Update is called once per frame
 	void Update () {
-        StartCoroutine(waiter());
-        lt.color = (colormanager.colorAttack == Invector.vItemManager.MoveColorEffect.BLUE) ? Color.blue : (colormanager.colorAttack == Invector.vItemManager.MoveColorEffect.GREEN) ? Color.green : (colormanager.colorAttack == Invector.vItemManager.MoveColorEffect.RED) ? Color.red : Color.yellow;
+        if (changeColor)
+        {
+            changeColor = false;
+            StartCoroutine(waiter());
+        }
+    }
+
+    public void OnDeath()
+    {
+        lt.enabled = false;
+        this.tag = "Untagged";
     }
 
     IEnumerator waiter()
     {
-        System.Array values = System.Enum.GetValues(typeof(Invector.vItemManager.MoveColorEffect));
-        System.Random random = new System.Random();
-        Invector.vItemManager.MoveColorEffect randomColor = (Invector.vItemManager.MoveColorEffect)values.GetValue(random.Next(values.Length));
-
-        int wait_time = UnityEngine.Random.Range(999, 1000);
-        yield return new WaitForSeconds(wait_time);
+        yield return new WaitForSeconds(TimeBeforeChange);
+        System.Array values = System.Enum.GetValues(typeof(MoveColorEffect));
+        MoveColorEffect randomColor = (MoveColorEffect)values.GetValue(random.Next(values.Length));
         colormanager.colorAttack = randomColor;
         colormanager.colorDefense = randomColor;
+        lt.color = (colormanager.colorAttack == MoveColorEffect.BLUE) ? Color.blue : (colormanager.colorAttack == MoveColorEffect.GREEN) ? Color.green : (colormanager.colorAttack == MoveColorEffect.RED) ? Color.red : Color.yellow;
+        changeColor = true;
     }
 }
