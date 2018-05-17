@@ -164,8 +164,7 @@ namespace Invector.vMelee
                     damage.damageValue = 15;
                 else
                     damage.damageValue =  5;
-            } else
-            {
+            } else {
                 Debug.Log("NOT A TARGET");
             }
             hitInfo.attackObject.ApplyDamage(hitInfo.hitBox, hitInfo.targetCollider, damage);

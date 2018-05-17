@@ -23,7 +23,7 @@ namespace Invector
             {
                 return _currentHealth;
             }
-            protected set
+            set
             {
                 _currentHealth = value;
                 if (!_isDead && _currentHealth <= 0)
